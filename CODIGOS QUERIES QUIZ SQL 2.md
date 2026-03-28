@@ -50,19 +50,19 @@ CREATE TABLE tic\_sedes\_resumen (
 
 SELECT
 
-&#x20;   LEFT(sede\_codigo, 2)               AS codigo\_departamento,
+&#x20;   SUBSTR(sede\_codigo, 1,2) ,
 
-&#x20;   COUNT(DISTINCT sede\_codigo)        AS total\_sedes
+&#x20;   COUNT(DISTINCT sede\_codigo)      
 
 FROM TIC\_2023
 
-WHERE actividad\_codigo = '05'
+WHERE actividad\_codigo IS NULL
 
-GROUP BY LEFT(sede\_codigo, 2)
+GROUP BY SUBSTR(sede\_codigo, 1,2)
 
 HAVING COUNT(DISTINCT sede\_codigo) > 500
 
-ORDER BY total\_sedes DESC;
+ORDER BY COUNT(DISTINCT sede\_codigo) DESC;
 
 **5.**
 
